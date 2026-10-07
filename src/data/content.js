@@ -1,4 +1,9 @@
 /*
+ * Baca EDITOR_GUIDE.md (di root project) sebelum mengubah konten di file ini.
+ * Panduan: file apa yang boleh diubah, cara isi tiap field, dan aturan penulisan.
+ */
+
+/*
  * SUMBER KONTEN — SELURUH ISI FILE INI ADALAH DUMMY / PLACEHOLDER.
  *
  * Semua teks, angka, foto, tautan, dan data di bawah ini dibuat sementara
