@@ -1,0 +1,29 @@
+:root {
+  /* Color Palette */
+  --navy: #0B2341;
+  --navy-dark: #071A30;
+  
+  --blue: #2878E8;
+  --blue-light: #EAF3FF;
+  --blue-soft: #F3F8FF;
+  
+  --white: #FFFFFF;
+  --surface: #F8FBFF;
+  
+  --text: #102A43;
+  --text-muted: #6B7C93;
+  
+  --border: #DCE8F5;
+  
+  /* Border Radius */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-full: 9999px;
+  
+  /* Layout */
+  --container: 1180px;
+  
+  /* Fonts */
+  --font-family: 'Plus Jakarta Sans', sans-serif;
+}

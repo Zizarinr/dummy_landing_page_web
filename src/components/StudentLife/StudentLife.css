@@ -1,0 +1,104 @@
+.student-life {
+  background-color: var(--surface);
+}
+
+.life-grid {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  gap: 64px;
+  align-items: center;
+}
+
+.activities-list {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  color: var(--navy);
+  font-size: 1.05rem;
+}
+
+.activity-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: var(--blue);
+  border-radius: 50%;
+}
+
+.life-gallery {
+  display: flex;
+  gap: 24px;
+  height: 600px;
+}
+
+.life-img-main {
+  flex: 2;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--blue-soft);
+  border-radius: 64px 32px 64px 32px;
+}
+
+.life-img-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.life-img-small-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.life-img-small {
+  flex: 1;
+  overflow: hidden;
+  background-color: var(--blue-light);
+  border-radius: 32px;
+}
+
+.life-img-small:nth-child(2) {
+  border-radius: 64px 32px 32px 64px;
+}
+
+.life-img-small img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 992px) {
+  .life-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  
+  .life-gallery {
+    height: 400px;
+  }
+}
+
+@media (max-width: 576px) {
+  .life-gallery {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .life-img-main {
+    height: 300px;
+  }
+  
+  .life-img-small-group {
+    flex-direction: row;
+    height: 200px;
+  }
+}

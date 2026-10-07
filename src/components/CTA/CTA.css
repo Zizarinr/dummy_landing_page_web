@@ -1,0 +1,79 @@
+.cta {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.cta-card {
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+  border-radius: var(--radius-lg);
+  padding: 80px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(40,120,232,0.3) 0%, rgba(40,120,232,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cta-card::after {
+  content: "";
+  position: absolute;
+  bottom: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(40,120,232,0.2) 0%, rgba(40,120,232,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  color: var(--white);
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.cta-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+
+.cta-btn {
+  background-color: var(--blue);
+  color: var(--white);
+  padding: 16px 40px;
+  font-size: 1.1rem;
+}
+
+.cta-btn:hover {
+  background-color: var(--white);
+  color: var(--navy);
+}
+
+@media (max-width: 768px) {
+  .cta-card {
+    padding: 60px 24px;
+  }
+  
+  .cta-title {
+    font-size: 2rem;
+  }
+}
