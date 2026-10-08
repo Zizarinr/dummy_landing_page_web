@@ -53,14 +53,14 @@ export default function renderFooter(data) {
           </div>
 
           <div class="footer-links" data-reveal style="--i: 1">
-            <h3 class="footer-heading">Quick Links</h3>
+            <h3 class="footer-heading">${data.quickLinksTitle || 'Quick Links'}</h3>
             <ul>
               ${linksHtml}
             </ul>
           </div>
 
           <div class="footer-contact" data-reveal style="--i: 2">
-            <h3 class="footer-heading">Kontak</h3>
+            <h3 class="footer-heading">${data.contactTitle || 'Kontak'}</h3>
             <ul>
               <li>${data.email}</li>
               <li>${data.phone}</li>

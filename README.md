@@ -1,154 +1,194 @@
-# Landing Page Dummy — Program Studi Teknik Informatika
+# Teknik Informatika Landing Page (Dummy)
 
-Landing page **dummy / template** untuk Program Studi Teknik Informatika.
-Fokus saat ini: **desain, struktur, dan layout** — seluruh konten (teks, angka,
-foto, tautan, data) adalah **placeholder** dan **bukan data resmi**.
+A **dummy/design** landing page for the Informatics Engineering study program.
+Everything on the page is still **placeholder** — text, numbers, images and links
+are **not official data**. The current goal is design, layout and structure, not
+final content.
 
-Stack: **Vite + vanilla HTML/CSS/JavaScript**. Tanpa backend, tanpa database.
+Built with **Vite + vanilla JS** (no framework). Styles are plain CSS driven by
+custom properties. Everything is data-driven from a single content file.
 
 ---
 
-## 1. Cara Menjalankan
+## 1. Getting Started
 
 ```bash
 npm install
-npm run dev       # development server (biasanya http://localhost:5173)
+npm run dev       # start the dev server (usually http://localhost:5173)
+npm run build     # production build into dist/
+npm run preview   # serve the production build locally
 ```
 
-Build untuk produksi:
-
-```bash
-npm run build     # hasilnya di folder dist/
-npm run preview   # menjalankan hasil build
-```
+Requires Node.js 18+.
 
 ---
 
-## 2. Struktur Project
+## 2. Project Structure
 
-```text
-index.html                 entry HTML (skip link, font, meta)
-public/
-  assets/images/           semua gambar placeholder (.png)
+```
+index.html                      HTML shell (pre-paint theme script, fonts, skip link)
 src/
-  main.js                  merangkai section + navbar toggle + scroll reveal
-  data/content.js          ★ SEMUA KONTEN DUMMY ADA DI SINI
+  main.js                       Renders all sections, wires theme + navbar + reveal
+  data/content.js               ★ ALL page content lives here (single source)
   styles/
-    variables.css          design token: warna, radius, container, font
-    global.css             reset, layout utility, button, glass, reveal, a11y
-  components/
+    variables.css               Design tokens (colors, radius, spacing, theme)
+    global.css                  Resets, shared utilities, buttons, glass, reveal
+  components/                   One folder per section, each with .js + .css
     Navbar/  Hero/  Stats/  Features/  Programs/  Projects/
     StudentLife/  Achievements/  Testimonial/  CTA/  Footer/
-    (setiap folder berisi .js untuk markup + .css untuk style)
-dist/                      hasil build (generated, jangan diedit manual)
+public/assets/images/           Placeholder images
+dist/                           Build output (generated — do not edit)
 ```
+
+Each component's `.js` returns an HTML string; `main.js` concatenates all of
+them into `#app`. Content is passed in from `content.js`, so layout and copy stay
+separate.
 
 ---
 
-## 3. Cara Mengganti Teks / Data
+## 3. Editing Content
 
-Semua teks terpusat di **`src/data/content.js`**.
-Cukup ubah isi objek `siteContent` — **layout dan CSS tidak perlu disentuh**.
+`src/data/content.js` is the **single source of truth** for all page content.
+Change values there — no need to touch the components.
 
 ```js
 export const siteContent = {
   hero: {
-    title: "Ganti judul di sini",
-    description: "Ganti deskripsi di sini",
-    // ...
+    title: "Some headline",
+    description: "Short supporting sentence.",
   },
   stats: [
-    { value: "15+", label: "Tahun Berdiri" },
-    // ...
+    { value: "15+", label: "Years Running" }
   ],
+  // ...
 };
 ```
 
-Konteks yang perlu diketahui:
+Rules of thumb:
 
-- Setiap blok yang angka/datanya dummy sudah diberi komentar `// DUMMY`.
-- `stats`, `achievements`, `testimonial` adalah **data dummy** — jangan
-  tampilkan sebagai klaim resmi sebelum konten asli masuk.
-- `navbar.links[].url` memakai anchor (`#tentang`, `#akademik`, ...) yang
-  cocok dengan `id` section. Section baru tinggal diberi `id` lalu link-nya
-  diarahkan ke sana.
-- `hero.floatingCard.value` sengaja diisi `"XX%"` placeholder.
+- Text values are plain strings — no HTML. Use `\n` for line breaks.
+- Every item needs a trailing comma **except the last** one inside `{ }` / `[ ]`.
+- Data marked **DUMMY** (stats, achievements, student projects, testimonial,
+  the hero floating card) is placeholder only — do not present it publicly as
+  real figures.
+- `navbar.links[].url` and `footer.quickLinks[].url` use `#anchors` that map to
+  section `id`s. `"Berita"` still points to `#` because that section does not
+  exist yet.
+- Adding/removing items in an array (e.g. `programs.items`) is safe — the grid
+  adapts automatically.
 
----
-
-## 4. Cara Mengganti Gambar
-
-1. Siapkan file gambar (format `.png` / `.webp` / `.jpg` asli).
-2. Taruh di `public/assets/images/`.
-3. Referensikan dari `content.js` dengan path **relatif tanpa garis miring
-   di depan**:
-
-```js
-image: "assets/images/hero.png"    // ✅ benar (aman untuk sub-path deploy)
-image: "/assets/images/hero.png"   // ❌ patah jika deploy ke sub-path
-```
-
-4. Perbarui `alt` yang ada di `content.js` (`imageAlt`, `imageMainAlt`, dll).
-   *Catatan: file placeholder saat ini berekstensi `.png` — pastikan ekstensi
-   sesuai isi filenya.*
-
-Ukuran yang dipakai sekarang: 800×600. Rasio yang dipakai layout:
-hero `4/5`, program `4/3`, project `16/10`.
+> A more detailed content-editing guide (`EDITOR_GUIDE.md`) is kept locally and
+> git-ignored; it is not part of the published repository.
 
 ---
 
-## 5. Cara Mengganti Warna / Desain
+## 4. Images
 
-Semua token ada di **`src/styles/variables.css`**:
+1. Add image files (`.png` / `.webp` / `.jpg`) to `public/assets/images/`.
+2. Reference them from `content.js` using a **relative path without a leading
+   slash**:
 
-```css
-:root {
-  --navy: #0B2341;        /* warna utama gelap */
-  --blue: #2878E8;        /* aksen biru */
-  --blue-light: #EAF3FF;
-  --blue-soft: #F3F8FF;
-  --surface: #F8FBFF;     /* background halaman */
-  --text: #102A43;
-  --text-muted: #6B7C93;
-  --border: #DCE8F5;
+   ```js
+   image: "assets/images/hero.png"    // correct — works under a sub-path
+   // image: "/assets/images/hero.png" // wrong — breaks on sub-path deploys
+   ```
 
-  --radius-sm: 12px;      /* sudut card kecil */
-  --radius-md: 20px;
-  --radius-lg: 32px;
+3. Always set the matching `alt` field (`imageAlt`, `imageMainAlt`,
+   `imagesSmallAlt[]`, …).
 
-  --container: 1180px;    /* lebar kontainer */
-  --font-family: 'Plus Jakarta Sans', sans-serif;
-}
-```
-
-Ganti nilainya, seluruh halaman ikut menyesuaikan.
+The bundled placeholders are schematic graphics. The `imagesSmall[]` and
+`imagesSmallAlt[]` arrays are positional — index 0 of one matches index 0 of the
+other.
 
 ---
 
-## 6. Catatan Teknis
+## 5. Colors & Theming
 
-- **Animasi scroll** (`fade-up`) ada di `main.js → initReveal()`, memakai
-  `IntersectionObserver` dan otomatis mati jika user mengaktifkan
-  *prefers-reduced-motion*.
-- **Menu mobile** aktif di lebar ≤ 992px (tombol hamburger + panel).
-- **Navbar** berubah menjadi glass/blur saat scroll (`navbar.is-scrolled`).
-- Gambar di bawah fold memakai `loading="lazy"`; gambar hero diprioritaskan.
-- Utility bersama (`.container`, `.section`, `.section-title`,
-  `.text-center`, `.btn`, `.glass`) ada di `global.css` — jangan definisikan
-  ulang di komponen.
-- **Dark mode**: atribut `data-theme="light|dark"` di `<html>`. Tema awal
-  mengikuti mode sistem, lalu pilihan user disimpan di `localStorage('theme')`.
-  Script pra-paint di `index.html` mencegah kedipan (FOUC); logika toggle ada
-  di `main.js → initTheme()`; tombol ikon ada di navbar (`#theme-toggle`).
-  Semua warna diatur oleh token di `variables.css` (blok `:root` = light,
-  `[data-theme="dark"]` = dark).
+All design tokens live in `src/styles/variables.css` and are shared by the light
+and dark themes via `:root` and `[data-theme="dark"]`.
+
+**Palette / tokens**
+
+| Token | Light | Dark | Purpose |
+|---|---|---|---|
+| `--navy` | `#0B2341` | `#173458` | Brand navy (surfaces on colored blocks) |
+| `--navy-dark` | `#071A30` | `#071128` | Footer / CTA gradient base |
+| `--blue` | `#2878E8` | `#4D8DF0` | Accent, links, highlights |
+| `--blue-light` | `#EAF3FF` | `#15263F` | Subtle icon/background tint |
+| `--blue-soft` | `#F3F8FF` | `#0F1F37` | Soft section background |
+| `--white` | `#FFFFFF` | `#FFFFFF` | Literal white (text over navy)
+| `--surface` | `#F8FBFF` | `#0A1526` | Page background |
+| `--text` | `#102A43` | `#CBD9EC` | Body text |
+| `--text-muted` | `#6B7C93` | `#8CA3BE` | Secondary text |
+| `--border` | `#DCE8F5` | `rgba(255,255,255,.10)` | Dividers / outlines |
+| `--panel` | `#FFFFFF` | `#0F1E35` | Section / card background |
+| `--heading` | `#0B2341` | `#E7EFFA` | Heading text |
+| `--glass-bg` | `rgba(255,255,255,.65)` | `rgba(15,31,55,.62)` | Glass surfaces |
+| `--glass-border` | `rgba(255,255,255,.8)` | `rgba(255,255,255,.12)` | Glass border |
+| `--shadow-color` | `rgba(11,35,65,.06)` | `rgba(0,0,0,.35)` | Shadows |
+
+Also available: `--radius-sm` `12px`, `--radius-md` `20px`, `--radius-lg` `32px`,
+`--radius-full` `9999px`, `--container` `1180px`, `--font-family`.
+
+**Theme tokens (`--panel`, `--heading`, `--glass-*`, `--shadow-color`) are the
+ones to use in components.** They keep light/dark consistent — prefer them over
+raw `--white` / `--navy` when styling backgrounds and headings.
+
+### Dark mode
+
+- The active theme is set as `data-theme="light|dark"` on `<html>`.
+- Initial theme follows the OS preference; once the user toggles, the choice is
+  stored in `localStorage`.
+- An inline pre-paint script in `index.html` avoids a flash of the wrong theme.
+- The toggle logic is in `main.js` (`initTheme`); the button lives in the navbar
+  (`#theme-toggle`). Both the light and dark palettes are defined in
+  `variables.css`.
 
 ---
 
-## 7. Yang Belum / Menyusul
+## 5b. Shared Utilities (`global.css`)
 
-- Konten resmi prodi (nama, sejarah, visi-misi, dosen, kurikulum, berita,
-  kontak, akun sosial) belum ada — semuanya masih placeholder.
-- Foto masih placeholder grafis, bukan foto asli.
-- Section **Berita** belum dibuat (link nav-nya masih `#`).
-- Link `#` lainnya adalah placeholder sengaja, menunggu halaman/detail asli.
+Reusable, theme-aware utility classes — use these instead of duplicating styles
+inside components:
+
+- `.section`, `.container`, `.section-title`, `.section-description`
+- `.btn` (+ `.btn-primary`, `.btn-secondary`)
+- `.glass`, `.glass-card`
+- `.reveal` / `.is-visible` (scroll animation states)
+- `.image-organic` (soft organic border-radius)
+- `[data-reveal]` — opt an element into the scroll-reveal animation
+
+---
+
+## 6. Technical Notes
+
+- **Scroll reveal**: `initReveal` in `main.js` uses `IntersectionObserver`;
+  elements with `data-reveal` fade/slide in, then the animation classes are
+  removed so normal hover transitions work again. Fully disabled under
+  `prefers-reduced-motion`.
+- **Navbar**: becomes a glass bar after scrolling (`.navbar.is-scrolled`);
+  a hamburger + slide-down panel take over at ≤ 992px.
+- **Accessibility**: skip link to `#konten-utama`, `:focus-visible` outlines,
+  `aria-expanded` / `aria-pressed` / `aria-label` on toggles, `Esc` closes the
+  mobile menu, and menu auto-closes on resize to desktop.
+- **Images**: below-the-fold images use `loading="lazy"`; the hero image is
+  prioritized.
+- **Hardcoded UI / accessibility strings** (not editable via `content.js`):
+  the skip link, the mobile-menu and theme-toggle `aria-label`s, and the
+  `aria-label` on social icons. These are developer concerns, not content.
+
+---
+
+## 7. Not Done Yet
+
+- **Section "Berita" (News)** is not built — its nav link still points to `#`.
+- Other `#` links (e.g. project "Lihat Detail", "Tonton Profil") are intentional
+  placeholders awaiting real pages/URLs.
+- All copy, figures, awards and photos are placeholder and must be replaced with
+  official content before launch.
+
+---
+
+## 8. License
+
+ISC.

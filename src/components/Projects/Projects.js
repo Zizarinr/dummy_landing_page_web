@@ -1,6 +1,8 @@
 import './Projects.css';
 
 export default function renderProjects(data) {
+  const linkText = data.linkText || 'Lihat Detail';
+
   const itemsHtml = data.items.map((item, idx) => `
     <div class="project-card" data-reveal style="--i: ${idx}">
       <div class="project-img-wrapper">
@@ -18,7 +20,7 @@ export default function renderProjects(data) {
         <span class="project-category">${item.category}</span>
         <h3 class="project-title">${item.title}</h3>
         <p class="project-description">${item.description}</p>
-        <a href="#" class="project-link">Lihat Detail <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="#" class="project-link">${linkText} <span class="arrow" aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   `).join('');

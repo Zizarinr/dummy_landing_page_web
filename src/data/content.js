@@ -98,6 +98,7 @@ export const siteContent = {
   // DUMMY CONTENT — replace with official student projects.
   studentProjects: {
     title: "Karya Mahasiswa",
+    linkText: "Lihat Detail",
     items: [
       {
         title: "Portal UMKM",
@@ -189,12 +190,14 @@ export const siteContent = {
     email: "info@universitas.ac.id",
     phone: "+62 xxx xxxx xxxx",
     address: "Jl. [Alamat Kampus], Kota, Negara",
+    quickLinksTitle: "Quick Links",
     quickLinks: [
       { text: "Tentang Prodi", url: "#tentang" },
       { text: "Kurikulum", url: "#akademik" },
       { text: "Pendaftaran", url: "#daftar" },
       { text: "Hubungi Kami", url: "#kontak" }
     ],
+    contactTitle: "Kontak",
     // DUMMY — akun sosial placeholder, ganti dengan akun resmi.
     socials: [
       { name: "Instagram", url: "#", icon: "instagram" },
