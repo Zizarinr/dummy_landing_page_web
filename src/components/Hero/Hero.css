@@ -65,7 +65,7 @@
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 24px;
-  color: var(--navy-dark);
+  color: var(--heading);
 }
 
 .hero-description {
@@ -132,7 +132,7 @@
 
 .card-text strong {
   font-size: 1.25rem;
-  color: var(--navy);
+  color: var(--heading);
   line-height: 1.2;
 }
 

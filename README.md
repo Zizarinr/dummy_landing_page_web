@@ -136,6 +136,12 @@ Ganti nilainya, seluruh halaman ikut menyesuaikan.
 - Utility bersama (`.container`, `.section`, `.section-title`,
   `.text-center`, `.btn`, `.glass`) ada di `global.css` — jangan definisikan
   ulang di komponen.
+- **Dark mode**: atribut `data-theme="light|dark"` di `<html>`. Tema awal
+  mengikuti mode sistem, lalu pilihan user disimpan di `localStorage('theme')`.
+  Script pra-paint di `index.html` mencegah kedipan (FOUC); logika toggle ada
+  di `main.js → initTheme()`; tombol ikon ada di navbar (`#theme-toggle`).
+  Semua warna diatur oleh token di `variables.css` (blok `:root` = light,
+  `[data-theme="dark"]` = dark).
 
 ---
 

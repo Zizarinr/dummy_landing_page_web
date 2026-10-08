@@ -1,29 +1,63 @@
 :root {
-  /* Color Palette */
+  /* Color Palette — Light (default) */
   --navy: #0B2341;
   --navy-dark: #071A30;
-  
+
   --blue: #2878E8;
   --blue-light: #EAF3FF;
   --blue-soft: #F3F8FF;
-  
+
   --white: #FFFFFF;
   --surface: #F8FBFF;
-  
+
   --text: #102A43;
   --text-muted: #6B7C93;
-  
+
   --border: #DCE8F5;
-  
+
+  /* Semantic tokens — dipakai bersama light & dark */
+  --panel: #FFFFFF;              /* bg section/card (dulu: var(--white) utk bg) */
+  --heading: #0B2341;            /* warna teks judul (dulu: var(--navy) utk teks) */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --shadow-color: rgba(11, 35, 65, 0.06);
+
   /* Border Radius */
   --radius-sm: 12px;
   --radius-md: 20px;
   --radius-lg: 32px;
   --radius-full: 9999px;
-  
+
   /* Layout */
   --container: 1180px;
-  
+
   /* Fonts */
   --font-family: 'Plus Jakarta Sans', sans-serif;
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --navy: #173458;
+  --navy-dark: #071128;
+
+  --blue: #4D8DF0;
+  --blue-light: #15263F;
+  --blue-soft: #0F1F37;
+
+  --white: #FFFFFF;              /* tetap putih literal untuk teks di atas navy */
+  --surface: #0A1526;
+
+  --text: #CBD9EC;
+  --text-muted: #8CA3BE;
+
+  --border: rgba(255, 255, 255, 0.10);
+
+  --panel: #0F1E35;
+  --heading: #E7EFFA;
+  --glass-bg: rgba(15, 31, 55, 0.62);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --shadow-color: rgba(0, 0, 0, 0.35);
+
+  color-scheme: dark;
 }

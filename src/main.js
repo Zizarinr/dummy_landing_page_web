@@ -38,7 +38,44 @@ function init() {
 
   initNavbar();
   initSmoothAnchors();
+  initTheme();
   initReveal();
+}
+
+function getStoredTheme() {
+  try {
+    const stored = localStorage.getItem('theme');
+    if (stored === 'light' || stored === 'dark') return stored;
+  } catch (e) { /* localStorage tidak tersedia */ }
+  return null;
+}
+
+function initTheme() {
+  const toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
+
+  const applyTheme = (theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    const isDark = theme === 'dark';
+    toggle.setAttribute('aria-pressed', String(isDark));
+    toggle.setAttribute('aria-label', isDark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap');
+  };
+
+  // Sinkronkan dengan tema yang sudah diset script pra-paint di index.html
+  const current = document.documentElement.getAttribute('data-theme');
+  if (current === 'light' || current === 'dark') {
+    applyTheme(current);
+  } else {
+    applyTheme(getStoredTheme() || 'light');
+  }
+
+  toggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    try {
+      localStorage.setItem('theme', next);
+    } catch (e) { /* abaikan */ }
+  });
 }
 
 function initNavbar() {
@@ -96,7 +133,9 @@ function initSmoothAnchors() {
       const target = document.querySelector(id);
       if (!target) return;
       event.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (typeof target.scrollIntoView === 'function') {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
       target.setAttribute('tabindex', '-1');
       target.focus({ preventScroll: true });
     });
@@ -107,7 +146,8 @@ function initReveal() {
   const targets = document.querySelectorAll('[data-reveal]');
   if (!targets.length) return;
 
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduceMotion = typeof window.matchMedia === 'function'
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduceMotion || !('IntersectionObserver' in window)) return;
 
   targets.forEach(el => el.classList.add('reveal'));

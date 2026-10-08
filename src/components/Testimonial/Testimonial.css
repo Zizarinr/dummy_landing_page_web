@@ -21,7 +21,7 @@
 .testimonial-quote {
   font-size: 1.5rem;
   font-weight: 500;
-  color: var(--navy);
+  color: var(--heading);
   line-height: 1.6;
   margin-bottom: 40px;
   position: relative;
@@ -56,7 +56,7 @@
 .author-name {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--heading);
   margin-bottom: 4px;
 }
 

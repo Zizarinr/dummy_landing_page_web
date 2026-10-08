@@ -21,7 +21,7 @@
   align-items: center;
   gap: 12px;
   font-weight: 500;
-  color: var(--navy);
+  color: var(--heading);
   font-size: 1.05rem;
 }
 

@@ -1,5 +1,5 @@
 .projects {
-  background-color: var(--white);
+  background-color: var(--panel);
 }
 
 .projects-header {
@@ -55,7 +55,7 @@
   font-size: 1.5rem;
   font-weight: 800;
   margin-bottom: 12px;
-  color: var(--navy);
+  color: var(--heading);
 }
 
 .project-description {
@@ -66,7 +66,7 @@
 
 .project-link {
   font-weight: 600;
-  color: var(--navy);
+  color: var(--heading);
   display: inline-flex;
   align-items: center;
   gap: 8px;

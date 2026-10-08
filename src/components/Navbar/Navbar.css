@@ -11,11 +11,11 @@
 
 /* State saat scroll — kelas ditambahkan oleh main.js */
 .navbar.is-scrolled {
-  background-color: rgba(255, 255, 255, 0.72);
+  background-color: var(--glass-bg);
   -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
-  border-bottom-color: rgba(11, 35, 65, 0.08);
-  box-shadow: 0 10px 30px rgba(11, 35, 65, 0.05);
+  border-bottom-color: var(--border);
+  box-shadow: 0 10px 30px var(--shadow-color);
 }
 
 .navbar-container {
@@ -46,7 +46,7 @@
 
 .brand-title {
   font-weight: 800;
-  color: var(--navy);
+  color: var(--heading);
   font-size: 1.1rem;
   line-height: 1.2;
 }
@@ -79,6 +79,39 @@
   gap: 12px;
 }
 
+/* Theme toggle — ikon sederhana, tidak mencolok */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  color: var(--heading);
+  background-color: transparent;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--blue-light);
+  color: var(--blue);
+  border-color: var(--blue-light);
+}
+
+/* Mode light: tampilkan bulan. Mode dark: tampilkan matahari. */
+.theme-toggle .icon-sun {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .icon-moon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .icon-sun {
+  display: block;
+}
+
 .mobile-only {
   display: none;
 }
@@ -95,7 +128,7 @@
   display: block;
   width: 24px;
   height: 2px;
-  background-color: var(--navy);
+  background-color: var(--heading);
   border-radius: 2px;
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
@@ -115,11 +148,11 @@
 /* Mobile menu panel */
 .mobile-menu {
   display: none;
-  background-color: rgba(255, 255, 255, 0.92);
+  background-color: var(--glass-bg);
   -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--border);
-  box-shadow: 0 20px 40px rgba(11, 35, 65, 0.08);
+  box-shadow: 0 20px 40px var(--shadow-color);
 }
 
 .mobile-menu[hidden] {

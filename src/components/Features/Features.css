@@ -1,5 +1,5 @@
 .features {
-  background-color: var(--white);
+  background-color: var(--panel);
 }
 
 .features-grid {
@@ -25,7 +25,7 @@
 
 .feature-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(11, 35, 65, 0.05);
+  box-shadow: 0 10px 30px var(--shadow-color);
   border-color: var(--blue-light);
 }
 
@@ -44,7 +44,7 @@
 .feature-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--heading);
 }
 
 @media (max-width: 992px) {

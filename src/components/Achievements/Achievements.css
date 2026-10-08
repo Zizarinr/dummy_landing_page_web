@@ -1,5 +1,5 @@
 .achievements {
-  background-color: var(--white);
+  background-color: var(--panel);
 }
 
 .achievements-list {
@@ -23,7 +23,7 @@
 .achievement-card:hover {
   transform: translateY(-5px);
   border-color: var(--blue-light);
-  box-shadow: 0 10px 30px rgba(11, 35, 65, 0.05);
+  box-shadow: 0 10px 30px var(--shadow-color);
 }
 
 .achievement-year {
@@ -40,7 +40,7 @@
 .achievement-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--heading);
   margin-bottom: 8px;
 }
 
